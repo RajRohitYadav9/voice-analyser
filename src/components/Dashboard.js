@@ -7,26 +7,27 @@ const Dashboard = () => {
     const [originalText, setOriginalText] = useState('');
     const [transcription, setTranscription] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    // const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const { isAuthenticated } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const response = await axios.get('https://voiceanalyserbackend.azurewebsites.net/check-auth', { withCredentials: true });
-                if (response.data.isAuthenticated) {
-                    setIsAuthenticated(true);
-                } else {
-                    navigate('/login');
-                }
-            } catch (error) {
-                console.error('Error checking authentication', error);
-                navigate('/login');
-            }
-        };
+    // useEffect(() => {
+    //     const checkAuth = async () => {
+    //         try {
+    //             const response = await axios.get('https://voiceanalyserbackend.azurewebsites.net/check-auth', { withCredentials: true });
+    //             if (response.data.isAuthenticated) {
+    //                 setIsAuthenticated(true);
+    //             } else {
+    //                 navigate('/login');
+    //             }
+    //         } catch (error) {
+    //             console.error('Error checking authentication', error);
+    //             navigate('/login');
+    //         }
+    //     };
 
-        checkAuth();
-    }, [navigate]);
+    //     checkAuth();
+    // }, [navigate]);
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
