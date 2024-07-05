@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../App';
+// import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
     const [file, setFile] = useState(null);
@@ -9,7 +10,7 @@ const Dashboard = () => {
     const [isLoading, setIsLoading] = useState(false);
     // const [isAuthenticated, setIsAuthenticated] = useState(false);
     const { isAuthenticated } = useContext(AuthContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // useEffect(() => {
     //     const checkAuth = async () => {
