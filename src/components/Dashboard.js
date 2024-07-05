@@ -13,7 +13,7 @@ const Dashboard = () => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/check-auth', { withCredentials: true });
+                const response = await axios.get('https://voiceanalyserbackend.azurewebsites.net/check-auth', { withCredentials: true });
                 if (response.data.isAuthenticated) {
                     setIsAuthenticated(true);
                 } else {
@@ -43,7 +43,7 @@ const Dashboard = () => {
         formData.append('file', file);
 
         try {
-            const response = await axios.post('http://localhost:5000/transcribe', formData, {
+            const response = await axios.post('https://voiceanalyserbackend.azurewebsites.net/transcribe', formData, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'multipart/form-data',

@@ -12,7 +12,7 @@ const Statistics = () => {
     useEffect(() => {
         const fetchWordFrequencies = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/word_frequencies', { withCredentials: true });
+                const response = await axios.get('https://voiceanalyserbackend.azurewebsites.net/word_frequencies', { withCredentials: true });
                 setWordFrequencies(response.data);
             } catch (error) {
                 console.error('Error fetching word frequencies', error);
@@ -21,7 +21,7 @@ const Statistics = () => {
 
         const fetchUniquePhrases = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/unique_phrases', { withCredentials: true });
+                const response = await axios.get('https://voiceanalyserbackend.azurewebsites.net/unique_phrases', { withCredentials: true });
                 setUniquePhrases(response.data.user_unique_phrases);
             } catch (error) {
                 console.error('Error fetching unique phrases', error);
@@ -30,7 +30,7 @@ const Statistics = () => {
 
         const fetchSimilarUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/similar_users', { withCredentials: true });
+                const response = await axios.get('https://voiceanalyserbackend.azurewebsites.net/similar_users', { withCredentials: true });
                 setSimilarUsers(response.data.most_similar_users);
             } catch (error) {
                 console.error('Error fetching similar users', error);
