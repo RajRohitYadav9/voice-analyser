@@ -12,7 +12,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/login', { email, password }, { withCredentials: true });
+            const response = await axios.post('https://voiceanalyserbackend.azurewebsites.net/login', { email, password }, { withCredentials: true });
             if (response.status === 200) {
                 setIsAuthenticated(true);
                 navigate('/dashboard');
