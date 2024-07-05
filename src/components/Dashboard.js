@@ -3,6 +3,8 @@ import axios from 'axios';
 // import { AuthContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 
+axios.defaults.withCredentials = true;
+
 const Dashboard = () => {
     const [file, setFile] = useState(null);
     const [originalText, setOriginalText] = useState('');
@@ -14,7 +16,7 @@ const Dashboard = () => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await axios.get('https://voiceanalyserbackend.azurewebsites.net/check-auth', { withCredentials: true });
+                const response = await axios.get('https://voiceanalyserbackend.azurewebsites.net/check-auth');
                 if (response.data.isAuthenticated) {
                     setIsAuthenticated(true);
                 } else {
@@ -45,7 +47,6 @@ const Dashboard = () => {
 
         try {
             const response = await axios.post('https://voiceanalyserbackend.azurewebsites.net/transcribe', formData, {
-                withCredentials: true,
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
