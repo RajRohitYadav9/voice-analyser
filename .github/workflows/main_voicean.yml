@@ -60,3 +60,7 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_178A9213FB0843D5A9F93B2D152F3EB8 }}
           package: .
+          
+      - name: Set environment variable
+        run: echo "PORT=8080" >> $GITHUB_ENV
+        
